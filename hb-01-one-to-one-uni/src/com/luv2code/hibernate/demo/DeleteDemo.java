@@ -42,7 +42,9 @@ public class DeleteDemo {
 			{
 				System.out.println("Deleting the instructor "+tempInstructor);
 				
-				//Note: This will also delete the associated "details" obj 
+				//Note: This will also delete the associated "details" object
+				//because of CascadeType.ALL
+				//
 				session.delete(tempInstructor);
 			}
 			

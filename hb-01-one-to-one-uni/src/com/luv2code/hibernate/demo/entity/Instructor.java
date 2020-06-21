@@ -44,6 +44,8 @@ public class Instructor {
 	private String email;
 	
 	
+	// This will just have one column added in the instructor table which is a foreign key pointing to the primary key of InstructorDetails
+	// which is the "id" field in the InstructorDetail  
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="instructor_detail_id")
 	private InstructorDetail instructorDetail;
