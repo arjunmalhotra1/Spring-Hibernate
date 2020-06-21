@@ -1,0 +1,1 @@
+This is just for practise. I created an emoloyee class to see if I can set up the entire Hibernate project, addign dependencies all by myself without the help from the tutorial.
