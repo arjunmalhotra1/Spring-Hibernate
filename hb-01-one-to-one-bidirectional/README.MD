@@ -16,5 +16,8 @@ For Bi-Directional mapping I have
 private Instructor instructor;
 
 This will map the Instructor with the Instructor detailsusing the instructorDetail field in the Instructor class(whic was used for One directional mapping)
+
+I tested CacadeType.ALL for delete too. When I deleted the Instructor detail entry the corresponding Instructor also got deleted.
+Also handled the case for when an id is not in the database the hibernate connections till closes with the finally block.
 	
 
