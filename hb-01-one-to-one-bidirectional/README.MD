@@ -11,10 +11,11 @@ This below code is sufficient for One-Directional Mapping.
 @JoinColumn(name="instructor_detail_id")
 private InstructorDetail instructorDetail;
 
-For Bi-Directional mapping I have
+For Bi-Directional mapping I have 
 @OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
 private Instructor instructor;
 
+<<<<<<< HEAD
 This will map the Instructor with the Instructor detailsusing the instructorDetail field in the Instructor class(which was used for One directional mapping)
 
 Later changed in the InstructorDetail class
@@ -35,4 +36,11 @@ break bi-directional link
 tempInstructorDetail.getInstructor().setInstructorDetail(null);
 
 Basically setting the instructor_detail_id value as null in the Instructor table in the database.
+=======
+This will map the Instructor with the Instructor detailsusing the instructorDetail field in the Instructor class(whic was used for One directional mapping)
+
+I tested CacadeType.ALL for delete too. When I deleted the Instructor detail entry the corresponding Instructor also got deleted.
+Also handled the case for when an id is not in the database the hibernate connections still closes with the finally block.
+	
+>>>>>>> 203c9f3014e81f3d8cc5f23b18f045bf353b0df9
 
