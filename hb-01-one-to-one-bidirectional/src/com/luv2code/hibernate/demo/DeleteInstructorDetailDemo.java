@@ -8,7 +8,7 @@ import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 import com.luv2code.hibernate.demo.entity.Student;
 
-public class GetInstructorDetailDemo { 
+public class DeleteInstructorDetailDemo { 
 
 	public static void main(String[] args) {
 	
@@ -31,7 +31,7 @@ public class GetInstructorDetailDemo {
 			session.beginTransaction();
 			
 			//get the instructor detail object
-			int theId=2999;
+			int theId=5;
 			InstructorDetail tempInstructorDetail=session.get(InstructorDetail.class, theId);
 			
 			//Print the Instructor Detail
@@ -39,6 +39,17 @@ public class GetInstructorDetailDemo {
 			
 			//Print the Instructor
 			System.out.println("the associated instructor "+tempInstructorDetail.getInstructor());
+			
+			//Now let's delete the InstructorDetail This will delete the Instructor entry as we have Cascade type of Delete.all
+			System.out.println("Deleteing tempInstructorDetail: "+tempInstructorDetail);
+			
+			//Delete the associated object reference
+			//break bi-directional link
+			
+			tempInstructorDetail.getInstructor().setInstructorDetail(null);
+			
+			session.delete(tempInstructorDetail);
+			
 			
 			//commit transaction
 			session.getTransaction().commit();

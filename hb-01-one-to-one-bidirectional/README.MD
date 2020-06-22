@@ -15,6 +15,24 @@ For Bi-Directional mapping I have
 @OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
 private Instructor instructor;
 
-This will map the Instructor with the Instructor detailsusing the instructorDetail field in the Instructor class(whic was used for One directional mapping)
-	
+This will map the Instructor with the Instructor detailsusing the instructorDetail field in the Instructor class(which was used for One directional mapping)
+
+Later changed in the InstructorDetail class
+@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)	
+private Instructor instructor;
+
+to
+
+Later changed in the InstructorDetail class
+@OneToOne(mappedBy="instructorDetail",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})	private Instructor instructor;
+
+
+This done to test that when I delete the InstructorDetail entry I didn't want to delete the Instructor entry forom my database.
+Just by changing this above code and then trying to delete the InstructorDetail entry from the database I faced an eroor, because of the Bi-directional link. For that I had to then first remove the link from the Istructor to the InstructorDetail.
+
+Delete the associated object reference
+break bi-directional link
+tempInstructorDetail.getInstructor().setInstructorDetail(null);
+
+Basically setting the instructor_detail_id value as null in the Instructor table in the database.
 
