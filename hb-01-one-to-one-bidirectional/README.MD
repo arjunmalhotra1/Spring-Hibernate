@@ -11,7 +11,7 @@ This below code is sufficient for One-Directional Mapping.
 @JoinColumn(name="instructor_detail_id")
 private InstructorDetail instructorDetail;
 
-For Bi-Directional mapping I have
+For Bi-Directional mapping I have 
 @OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
 private Instructor instructor;
 
